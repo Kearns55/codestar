@@ -59,7 +59,15 @@ def post_detail(request, slug):
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    view to edit comment
+    **context**
+
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        An instance of :model:`blog.Comment`.
+    ``comment_form``
+        An instance of :model:`blog.CommentForm`.
     """
     if request.method == "POST":
 
@@ -83,6 +91,12 @@ def comment_edit(request, slug, comment_id):
 def comment_delete(request, slug, comment_id):
     """
     view to delete comment
+    **context**
+    
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        An instance of :model:`blog.Comment`.
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
